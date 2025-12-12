@@ -25,7 +25,25 @@ void draw_comm_signals()
     }
 }
 
+void tempo_change(int amountToChange) {
+    int newTempo = MDS_command(MDS_CMD_GET_TEMPO, MDS_BGM) + amountToChange;
+    MDS_command2(MDS_CMD_SET_TEMPO, MDS_BGM, newTempo);
+}
+
+void INPUT_handler( u16 joy, u16 changed, u16 state) {
+	if (joy == JOY_1) {
+		if (state & BUTTON_LEFT) {
+			tempo_change(-5);
+		}
+        else if (state & BUTTON_RIGHT) {
+            tempo_change(5);
+        }
+	}	
+}
+
 int main() {
+    JOY_init();
+    JOY_setEventHandler(INPUT_handler);
     // start MDSDRV init
     if(MDS_init(mdsseqdat, mdspcmdat))
 	{
@@ -46,6 +64,10 @@ int main() {
 
     VDP_drawTextBG(BG_A, "you can make game events", 6, 18);
     VDP_drawTextBG(BG_A, "that sync with your music!", 6, 19);
+
+    VDP_drawTextBG(BG_A, "controls:", 3, 24);
+    VDP_drawTextBG(BG_A, "    left: decrease tempo", 3, 25);
+    VDP_drawTextBG(BG_A, "   right: increase tempo", 3, 26);
 
     while(1) {
         draw_comm_signals(); // read current comm signals and do stuffs in real time
