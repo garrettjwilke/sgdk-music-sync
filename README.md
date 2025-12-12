@@ -52,7 +52,11 @@ building these from source and recompiling your MML with `mdslink` every time yo
 2. choose your mml background music folder
 3. choose your mml sfx folder
 4. choose your export directory
-5. click on `export`
+5. click on `export` and copy the files to the `res/mdsdrv` directory
+  * the files generated are:
+    1. `mdspcm.bin`
+    2. `mdsseq.bin`
+    3. `mdsseq.h`
 
 ### recompile MML music using mdslink
 1. compile `mdslink` from the [mdslink (ctrmml)](https://github.com/garrettjwilke/ctrmml/tree/rng-patterns) fork.
