@@ -11,7 +11,7 @@ sync your game events to the music.
 
 ## how it works
 
-i made a custom fork of [MDSDRV](https://github.com/garrettjwilke/MDSDRV/tree/rng-patterns) (use the `rng-patterns` branch).
+i made a custom fork of [MDSDRV](https://github.com/garrettjwilke/MDSDRV).
 it enables the unused `comm` byte to send a single byte every frame. this takes advantage of this by enabling it and allowing the user to send `comm` bytes.
 
 the following MML will send `comm 1` at the start of the first `a` note, then it will send `comm 2` at the start of the `b` note. it will loop (`L`) and allow the user to keep track of when the notes happen
@@ -39,9 +39,9 @@ switch (comm_signal):
 ## how to compile your music to actually use this thingy
 this requires a custom MDSDRV and custom `mdslink` to compile the music:
 
-[MDSDRV](https://github.com/garrettjwilke/MDSDRV/tree/rng-patterns)
+[MDSDRV](https://github.com/garrettjwilke/MDSDRV)
 
-[mdslink (ctrmml)](https://github.com/garrettjwilke/ctrmml/tree/rng-patterns)
+[mdslink (ctrmml)](https://github.com/garrettjwilke/ctrmml)
 
 
 building these from source and recompiling your MML with `mdslink` every time you make a change can be annoying/difficult. i have created a custom fork of `mmlgui` that has a tool to build your MML files:
@@ -59,7 +59,7 @@ building these from source and recompiling your MML with `mdslink` every time yo
     3. `mdsseq.h`
 
 ### recompile MML music using mdslink
-1. compile `mdslink` from the [mdslink (ctrmml)](https://github.com/garrettjwilke/ctrmml/tree/rng-patterns) fork.
+1. compile `mdslink` from the [mdslink (ctrmml)](https://github.com/garrettjwilke/ctrmml) fork.
 2. tell `mdslink` where your MML music and sfx data is, and compile:
   `./mdslink -o "PATH/TO/SGDK/PROJECT/res/mdsdrv/mdsseq.bin" "PATH/TO/SGDK/PROJECT/res/mdsdrv/mdspcm.bin" -h "PATH/TO/SGDK/PROJECT/res/mdsdrv/mdsseq.h" PATH/TO/MML_MUSIC/*.mml PATH/TO/MML_SFX/*.mml`
 3. hopefully it works
