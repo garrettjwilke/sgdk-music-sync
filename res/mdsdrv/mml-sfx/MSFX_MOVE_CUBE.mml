@@ -1,0 +1,6 @@
+#platform mdsdrv
+#group se
+
+@1 psg 15:1 6:7 
+
+I t175 @1 v13 o5 l32 e a
